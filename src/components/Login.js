@@ -43,7 +43,7 @@ function Login({ toggleForm, multiplefunc }) {
           Log In
         </button>
       </form>
-      <div className="sign-up" onClick={() => toggleForm("register")}>
+      <div className="sign-up" onClick={() => navigate("/register")}>
         New here? Sign up for an account
       </div>
     </div>

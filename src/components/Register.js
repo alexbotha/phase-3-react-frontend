@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register({ toggleForm, multiplefunc }) {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  let navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -56,7 +59,7 @@ function Register({ toggleForm, multiplefunc }) {
           Sign up
         </button>
       </form>
-      <div className="sign-up" onClick={() => toggleForm("login")}>
+      <div className="sign-up" onClick={() => navigate("/")}>
         Have an account? Login here
       </div>
     </div>

@@ -39,23 +39,23 @@ function App() {
           </Routes>
         </>
       ) : (
-        <Routes>
-          {currentForm === "login" ? (
+        <>
+          <Routes>
             <Route
               path="/"
               element={
                 <Login toggleForm={toggleForm} multiplefunc={multiplefunc} />
               }
             />
-          ) : (
+          </Routes>
+
+          <Routes>
             <Route
-              path="/"
-              element={
-                <Register toggleForm={toggleForm} multiplefunc={multiplefunc} />
-              }
+              path="/register"
+              element={<Register multiplefunc={multiplefunc} />}
             />
-          )}
-        </Routes>
+          </Routes>
+        </>
       )}
     </div>
   );
