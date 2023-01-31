@@ -9,14 +9,9 @@ import Login from "./Login";
 import Register from "./Register";
 
 function App() {
-  const [currentForm, setCurrentForm] = useState("login");
   const [loggedIn, setLoggedIn] = useState(false);
 
   let navigate = useNavigate();
-
-  function toggleForm(formName) {
-    setCurrentForm(formName);
-  }
 
   function multiplefunc() {
     setLoggedIn(!loggedIn);
@@ -41,12 +36,7 @@ function App() {
       ) : (
         <>
           <Routes>
-            <Route
-              path="/"
-              element={
-                <Login toggleForm={toggleForm} multiplefunc={multiplefunc} />
-              }
-            />
+            <Route path="/" element={<Login multiplefunc={multiplefunc} />} />
           </Routes>
 
           <Routes>

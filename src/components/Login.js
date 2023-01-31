@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-function Login({ toggleForm, multiplefunc }) {
+function Login({ multiplefunc }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

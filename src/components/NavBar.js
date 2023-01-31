@@ -8,14 +8,14 @@ function NavBar({ multiplefunc }) {
       <ul className="navbar-nav">
         <li className="nav-item active">
           <div className="nav-link">
-            <NavLink to="/restuarants">Restuarants</NavLink>
+            <NavLink to="/restuarants">Home</NavLink>
           </div>
         </li>
       </ul>
       <ul className="navbar-nav">
         <li className="nav-item">
           <div className="nav-link">
-            <NavLink to="/user">Your Profile</NavLink>
+            <NavLink to="/user">User profile</NavLink>
           </div>
         </li>
       </ul>
