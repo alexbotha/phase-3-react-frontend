@@ -2,3 +2,69 @@ html {
   background: url("/public/chris-liverani-oCsaxvGCehM-unsplash.jpg") no-repeat
     center center/cover;
 }
+
+.app {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navBar {
+  color: white;
+  text-align: center;
+}
+
+.header {
+  text-align: center;
+  color: lightgreen;
+  display: grid;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.underHeader {
+  color: darkslategrey;
+}
+
+.logout {
+  cursor: pointer;
+}
+
+.user {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f3eed9;
+
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.userform {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+}
+
+.button-login {
+  border: none;
+  background-color: lightgreen;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.sign-up {
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
