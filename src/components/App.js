@@ -1,52 +1,63 @@
-import React, { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import "../App.css";
 import Header from "./Header";
 import NavBar from "./NavBar";
 import Review from "./Review";
 import RestuarantContainer from "./RestuarantContainer";
-import Login from "./Login";
-import Register from "./Register";
+import Restuarant from "./Restuarant";
+import AddRestuarant from "./AddRestuarant";
+import ReviewContainer from "./ReviewContainer";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [restuarants, setRestuarants] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
-  let navigate = useNavigate();
+  useEffect(() => {
+    fetch("http://localhost:9292/restuarants")
+      .then((r) => r.json())
+      .then((data) => {
+        setRestuarants(data);
+      });
+  }, []);
 
-  function multiplefunc() {
-    setLoggedIn(!loggedIn);
-    navigate("/");
+  useEffect(() => {
+    fetch("http://localhost:9292/reviews")
+      .then((r) => r.json())
+      .then((data) => {
+        setReviews(data);
+      });
+  }, []);
+
+  function updatingRestuarantList(newRestDetails) {
+    setRestuarants([...restuarants, newRestDetails]);
   }
 
   return (
     <div className="app">
-      {loggedIn === true ? (
-        <>
-          <Header />
-          <NavBar multiplefunc={multiplefunc} />
+      <Header />
+      <NavBar />
 
-          <Routes>
-            <Route path="/restuarants" element={<RestuarantContainer />} />
-          </Routes>
+      <Routes>
+        <Route
+          path="/restuarants"
+          element={<RestuarantContainer restuarants={restuarants} />}
+        />
+        <Route
+          path="/reviews"
+          element={<ReviewContainer reviews={reviews} />}
+        />
 
-          <Routes>
-            <Route path="/reviews" element={<Review />} />
-          </Routes>
-        </>
-      ) : (
-        <>
-          <Routes>
-            <Route path="/" element={<Login multiplefunc={multiplefunc} />} />
-          </Routes>
-
-          <Routes>
-            <Route
-              path="/register"
-              element={<Register multiplefunc={multiplefunc} />}
-            />
-          </Routes>
-        </>
-      )}
+        <Route path="/restuarants/:id" element={<Restuarant />} />
+        <Route path="/reviews/:id" element={<Review />} />
+        <Route
+          exact
+          path="/restuarants/new"
+          element={
+            <AddRestuarant updatingRestuarantList={updatingRestuarantList} />
+          }
+        />
+      </Routes>
     </div>
   );
 }
