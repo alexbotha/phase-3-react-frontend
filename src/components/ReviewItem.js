@@ -4,10 +4,13 @@ import { NavLink } from "react-router-dom";
 function ReviewItem({ id, review }) {
   return (
     <div>
-      <NavLink className="review-homepage" to={`/reviews/${id}`}>
-        <h3>Review {review.id} </h3>
-        <p>Company name: {review.company_name}</p>
-      </NavLink>
+      <div className="review-heading">
+        <p>{review.company_name}</p>
+        <NavLink className="underline" to={`/reviews/${id}`}>
+          <p>Click for more info</p>
+        </NavLink>
+        <p>{review.rating}</p>
+      </div>
     </div>
   );
 }

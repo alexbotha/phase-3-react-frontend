@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 function Review() {
   const [review, setReview] = useState({});
 
-  console.log("??", review);
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -17,10 +15,13 @@ function Review() {
   return (
     <>
       <div className="h">
+        <h1>Company: {review.company_name}</h1>
         <p>Review: {review.review}</p>
         <p>Rating: {review.rating}</p>
         <p>Created at: {review.created_at}</p>
       </div>
+      <button>Edit Review</button>
+      <button>Delete Review</button>
     </>
   );
 }
