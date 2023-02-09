@@ -111,3 +111,19 @@
   justify-content: center;
   display: grid;
 }
+
+.review-heading {
+  display: flex;
+  justify-content: space-around;
+  text-decoration: none;
+}
+
+.restuarant-heading {
+  display: flex;
+  justify-content: space-around;
+  text-decoration: none;
+}
+
+.underline {
+  text-decoration: none;
+}
