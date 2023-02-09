@@ -13,6 +13,7 @@
   display: grid;
   padding: 1rem;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .underHeader {
@@ -126,4 +127,16 @@
 
 .underline {
   text-decoration: none;
+}
+
+.welcome-page {
+  padding: 23rem;
+  text-align: center;
+  color: white;
+  background: url("../public/chris-liverani-oCsaxvGCehM-unsplash.jpg") no-repeat
+    center center/cover;
+}
+
+.welcome-button {
+  display: flex;
 }
