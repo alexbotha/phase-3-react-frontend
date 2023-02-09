@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Restuarant() {
   const [restuarant, setRestuarant] = useState({});
 
-  console.log("rest", restuarant);
-
+  let navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
@@ -23,6 +22,9 @@ function Restuarant() {
         <p>Cuisine: {restuarant.cuisine}</p>
         <p>Website: {restuarant.website}</p>
         <br></br>
+        <button onClick={() => navigate(`/reviews/new`)}>
+          Create a review for {`${restuarant.name}`}
+        </button>
         <hr></hr>
       </div>
     </>
