@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function AddRestuarant({ updatingRestuarantList }) {
@@ -20,7 +20,6 @@ function AddRestuarant({ updatingRestuarantList }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     fetch(`http://localhost:9292/restuarants`, {
       method: "POST",
       headers: {
@@ -30,6 +29,7 @@ function AddRestuarant({ updatingRestuarantList }) {
     })
       .then((response) => response.json())
       .then((newRestDetails) => updatingRestuarantList(newRestDetails));
+    navigate("/restuarants");
   }
 
   return (
@@ -41,6 +41,7 @@ function AddRestuarant({ updatingRestuarantList }) {
           onChange={handleChange}
           placeholder="Name"
           value={newRestuarant.name}
+          autoFocus={true}
         />
         <input
           type="text"
@@ -67,11 +68,7 @@ function AddRestuarant({ updatingRestuarantList }) {
         <br />
         <br />
 
-        <button
-          className="addRestuarantButton"
-          type="submit"
-          onClick={() => navigate("/restuarants")}
-        >
+        <button className="addRestuarantButton" type="submit">
           Add Restuarant
         </button>
       </form>
