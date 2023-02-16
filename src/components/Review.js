@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import EditReview from "./EditReview";
 
-function Review() {
+function Review({ deleteReview }) {
   const [review, setReview] = useState({});
-
   const { id } = useParams();
+  let navigate = useNavigate();
+
+  function handleDelete() {
+    deleteReview(review);
+    navigate("/reviews");
+  }
 
   useEffect(() => {
     fetch(`http://localhost:9292/reviews/${id}`)
@@ -20,8 +26,9 @@ function Review() {
         <p>Rating: {review.rating}</p>
         <p>Created at: {review.created_at}</p>
       </div>
-      <button>Edit Review</button>
-      <button>Delete Review</button>
+
+      <button onClick={() => navigate(`/reviews/jo`)}>Edit Review</button>
+      <button onClick={handleDelete}>Delete Review</button>
     </>
   );
 }
