@@ -8,7 +8,6 @@ function AddReview({ updatingReviewList }) {
     review: "",
     rating: "",
     company_name: "",
-    restuarant_id: "",
   });
 
   function handleChange(e) {
@@ -29,11 +28,12 @@ function AddReview({ updatingReviewList }) {
     })
       .then((response) => response.json())
       .then((newReviewDetails) => updatingReviewList(newReviewDetails));
-    navigate("/restuarants");
+    navigate("/reviews");
   }
 
   return (
     <div>
+      <h3>Create a review</h3>
       <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
