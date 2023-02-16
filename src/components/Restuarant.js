@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
 
 import { useParams, useNavigate } from "react-router-dom";
-
+import RestuarantReview from "./RestuarantReview";
 function Restuarant() {
-  const [restuarant, setRestuarant] = useState({});
+  const [restuarant, setRestuarant] = useState({
+    reviews: [],
+  });
 
   let navigate = useNavigate();
-  const { id } = useParams();
+  const params = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:9292/restuarants/${id}`)
+    fetch(`http://localhost:9292/restuarants/${params.id}`)
       .then((response) => response.json())
-      .then((data) => setRestuarant(data));
-  }, [id]);
+      .then((data) => {
+        setRestuarant(data);
+      });
+  }, [params]);
+
+  const reviews = restuarant.reviews.map((review) => (
+    <RestuarantReview key={review.id} review={review} />
+  ));
 
   return (
     <>
@@ -22,9 +30,10 @@ function Restuarant() {
         <p>Cuisine: {restuarant.cuisine}</p>
         <p>Website: {restuarant.website}</p>
         <br></br>
-        <button onClick={() => navigate(`/reviews/new`)}>
-          Create a review for {`${restuarant.name}`}
-        </button>
+        <h3>Reviews</h3>
+        {reviews}
+        <br></br>
+
         <hr></hr>
       </div>
     </>
