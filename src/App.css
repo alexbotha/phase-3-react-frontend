@@ -20,51 +20,11 @@
   color: darkslategrey;
 }
 
-.logout {
-  cursor: pointer;
-  color: lightgreen;
-  font-weight: bolder;
-}
-
-.user {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #f3eed9;
-
-  flex-direction: column;
-  padding: 1rem;
-}
-
-.userform {
-  display: flex;
-  flex-direction: column;
-}
-
 .input {
   margin: 0.5rem 0;
   padding: 1rem;
   border: none;
   border-radius: 1rem;
-}
-
-.button-login {
-  border: none;
-  background-color: lightgreen;
-  padding: 1rem;
-  border-radius: 1rem;
-  cursor: pointer;
-  margin-bottom: 2rem;
-}
-
-.sign-up {
-  border: none;
-  padding: 1rem;
-  border-radius: 1rem;
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 .navlink {
@@ -119,10 +79,19 @@
   text-decoration: none;
 }
 
+.add-res-btn {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+}
+
 .restuarant-heading {
   display: flex;
   justify-content: space-around;
   text-decoration: none;
+
+  color: darkslategrey;
 }
 
 .underline {
