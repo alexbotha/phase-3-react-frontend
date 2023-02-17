@@ -10,6 +10,7 @@ import AddRestuarant from "./AddRestuarant";
 import ReviewContainer from "./ReviewContainer";
 import AddReview from "./AddReview";
 import WelcomePage from "./WelcomePage";
+import EditReview from "./EditReview";
 
 function App() {
   const [restuarants, setRestuarants] = useState([]);
@@ -90,6 +91,7 @@ function App() {
               path="/reviews/new"
               element={<AddReview updatingReviewList={updatingReviewList} />}
             />
+            <Route path="/reviews/:id/edit" element={<EditReview />} />
           </Routes>
         </div>
       )}
