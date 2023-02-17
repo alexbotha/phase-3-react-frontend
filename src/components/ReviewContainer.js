@@ -13,6 +13,8 @@ function ReviewContainer({ reviews }) {
       {reviews.map((review) => (
         <ReviewItem key={review.id} id={review.id} review={review} />
       ))}
+      <br></br>
+      <hr></hr>
       <AddReviewButton />
     </>
   );

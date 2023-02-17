@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import EditReview from "./EditReview";
 
 function Review({ deleteReview }) {
   const [review, setReview] = useState({});
@@ -20,14 +19,18 @@ function Review({ deleteReview }) {
 
   return (
     <>
-      <div className="h">
-        <h1>Company: {review.company_name}</h1>
+      <div className="rest-details">
+        <h3>{review.company_name}</h3>
         <p>Review: {review.review}</p>
         <p>Rating: {review.rating}</p>
         <p>Created at: {review.created_at}</p>
       </div>
+      <br></br>
+      <hr></hr>
 
-      <button onClick={() => navigate(`/reviews/jo`)}>Edit Review</button>
+      <button onClick={() => navigate(`/reviews/${id}/edit`)}>
+        Edit Review
+      </button>
       <button onClick={handleDelete}>Delete Review</button>
     </>
   );
