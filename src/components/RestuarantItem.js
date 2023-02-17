@@ -1,12 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function RestuarantItem({ id, filteredRestuarant }) {
+function RestuarantItem({ restuarant }) {
+  // const companyName = restuarant.name;
+
+  // let capsing =
+  //   companyName.charAt(0).toUpperCase() + companyName.slice(1).toLowerCase();
+
   return (
     <div>
-      <NavLink className="rest-homepage" to={`/restuarants/${id}`}>
-        <h3>{filteredRestuarant.name}</h3>
-      </NavLink>
+      <div className="restuarant-heading">
+        <NavLink className="underline" to={`/restuarants/${restuarant.id}`}>
+          <p>{restuarant.name}</p>
+        </NavLink>
+        <p>{restuarant.cuisine}</p>
+        <p>{restuarant.overall_rating}</p>
+      </div>
     </div>
   );
 }
