@@ -14,29 +14,13 @@ function NavBar() {
           </div>
         </li>
       </ul>
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <div className="nav-link">
-            <NavLink className="navlink" to="/user">
-              User profile
-            </NavLink>
-          </div>
-        </li>
-      </ul>
+
       <ul className="navbar-nav">
         <li className="nav-item">
           <div className="nav-link">
             <NavLink className="navlink" to="/reviews">
               Reviews
             </NavLink>
-          </div>
-        </li>
-      </ul>
-
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <div className="nav-link">
-            <div className="logout">Logout</div>
           </div>
         </li>
       </ul>
