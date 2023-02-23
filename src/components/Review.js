@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 function Review({ deleteReview }) {
-  const [review, setReview] = useState({});
   const { id } = useParams();
   let navigate = useNavigate();
+
+  const [review, setReview] = useState({});
 
   function handleDelete() {
     deleteReview(review);
