@@ -21,7 +21,9 @@ function RestuarantContainer({ restuarants }) {
       {restuarantItem}
       <br></br>
       <hr></hr>
-      <AddRestuarantButton />
+      <div className="xxx">
+        <AddRestuarantButton />
+      </div>
     </>
   );
 }

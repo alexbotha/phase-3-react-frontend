@@ -34,6 +34,7 @@ function AddRestuarant({ updatingRestuarantList }) {
 
   return (
     <div>
+      <h3 className="rest-details">Create a new restuarant</h3>
       <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -72,6 +73,8 @@ function AddRestuarant({ updatingRestuarantList }) {
           Add Restuarant
         </button>
       </form>
+      <br></br>
+      <hr></hr>
     </div>
   );
 }

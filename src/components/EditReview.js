@@ -61,9 +61,11 @@ function EditReview() {
         <br />
         <br />
         <button className="addReviewButton" type="submit">
-          Edit Review
+          Update review
         </button>
       </form>
+      <br></br>
+      <hr></hr>
     </div>
   );
 }

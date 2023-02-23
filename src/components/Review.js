@@ -28,11 +28,14 @@ function Review({ deleteReview }) {
       </div>
       <br></br>
       <hr></hr>
-
-      <button onClick={() => navigate(`/reviews/${id}/edit`)}>
-        Edit Review
-      </button>
-      <button onClick={handleDelete}>Delete Review</button>
+      <div className="left">
+        <button onClick={() => navigate(`/reviews/${id}/edit`)}>
+          Edit Review
+        </button>
+      </div>
+      <div className="right">
+        <button onClick={handleDelete}>Delete Review</button>
+      </div>
     </>
   );
 }

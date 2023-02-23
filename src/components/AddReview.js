@@ -33,7 +33,7 @@ function AddReview({ updatingReviewList }) {
 
   return (
     <div>
-      <h3>Create a review</h3>
+      <h3 className="rest-details">Create a review</h3>
       <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -62,6 +62,8 @@ function AddReview({ updatingReviewList }) {
           Add Review
         </button>
       </form>
+      <br></br>
+      <hr></hr>
     </div>
   );
 }

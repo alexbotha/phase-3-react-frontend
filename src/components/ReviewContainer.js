@@ -16,7 +16,9 @@ function ReviewContainer({ reviews }) {
       {review}
       <br></br>
       <hr></hr>
-      <AddReviewButton />
+      <div className="xxx">
+        <AddReviewButton />
+      </div>
     </>
   );
 }

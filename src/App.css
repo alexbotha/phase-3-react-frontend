@@ -74,9 +74,12 @@
 }
 
 .review-heading {
-  display: flex;
-  justify-content: space-around;
-  text-decoration: none;
+  display: grid;
+  grid-template-columns: 562px 562px 562px;
+  grid-template-rows: 10px 10px 10px;
+  column-gap: 10px;
+  row-gap: 7.5px;
+  justify-items: center;
 }
 
 .add-res-btn {
@@ -86,12 +89,27 @@
   text-align: center;
 }
 
-.restuarant-heading {
+.xxx {
   display: flex;
-  justify-content: space-around;
-  text-decoration: none;
+  justify-content: center;
+}
 
-  color: darkslategrey;
+.left {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.right {
+  text-align: center;
+}
+
+.restuarant-heading {
+  display: grid;
+  grid-template-columns: 560px 560px 560px;
+  grid-template-rows: 10px 10px 10px;
+  column-gap: 10px;
+  row-gap: 7.5px;
+  justify-items: center;
 }
 
 .underline {
