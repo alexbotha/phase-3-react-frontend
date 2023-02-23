@@ -1,35 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import RestuarantItem from "./RestuarantItem";
-import Search from "./Search";
+
 import AddRestuarantButton from "./AddRestuarantButton";
 
 function RestuarantContainer({ restuarants }) {
-  const [searchInput, setSearchInput] = useState("");
-
-  function searchInputFunction(e) {
-    setSearchInput(e);
-  }
-
-  const filteredRestuarants = restuarants.filter((restuarant) =>
-    restuarant.name.toLowerCase().startsWith(searchInput.toLowerCase())
-  );
-
+  const restuarantItem = restuarants.map((restuarant) => (
+    <RestuarantItem
+      key={restuarant.id}
+      id={restuarant.id}
+      restuarant={restuarant}
+    />
+  ));
   return (
     <>
-      <div className="searchbar">
-        <Search
-          searchInput={searchInput}
-          searchInputFunction={searchInputFunction}
-        />
-        <AddRestuarantButton />
+      <div className="restuarant-heading">
+        <h2>Company</h2>
+        <h2>Cuisine</h2>
+        <h2>Rating</h2>
       </div>
-      {filteredRestuarants.map((filteredRestuarant) => (
-        <RestuarantItem
-          key={filteredRestuarant.id}
-          id={filteredRestuarant.id}
-          filteredRestuarant={filteredRestuarant}
-        />
-      ))}
+      {restuarantItem}
+      <br></br>
+      <hr></hr>
+      <AddRestuarantButton />
     </>
   );
 }
