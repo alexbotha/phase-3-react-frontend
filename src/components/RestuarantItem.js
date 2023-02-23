@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function RestuarantItem({ restuarant }) {
+function RestuarantItem({ id, restuarant }) {
   // const companyName = restuarant.name;
 
   // let capsing =
@@ -10,7 +10,7 @@ function RestuarantItem({ restuarant }) {
   return (
     <div>
       <div className="restuarant-heading">
-        <NavLink className="underline" to={`/restuarants/${restuarant.id}`}>
+        <NavLink className="underline" to={`/restuarants/${id}`}>
           <p>{restuarant.name}</p>
         </NavLink>
         <p>{restuarant.cuisine}</p>
