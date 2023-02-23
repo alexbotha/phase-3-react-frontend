@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
-
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import RestuarantReview from "./RestuarantReview";
+
 function Restuarant() {
+  const { id } = useParams();
+
   const [restuarant, setRestuarant] = useState({
     reviews: [],
   });
 
-  let navigate = useNavigate();
-  const params = useParams();
-
   useEffect(() => {
-    fetch(`http://localhost:9292/restuarants/${params.id}`)
+    fetch(`http://localhost:9292/restuarants/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setRestuarant(data);
       });
-  }, [params]);
+  }, [id]);
 
   const reviews = restuarant.reviews.map((review) => (
     <RestuarantReview key={review.id} review={review} />
