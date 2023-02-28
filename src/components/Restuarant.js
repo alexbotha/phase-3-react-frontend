@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import RestuarantReview from "./RestuarantReview";
 
-function Restuarant() {
+function Restuarant({ restuarants }) {
   const { id } = useParams();
-  let navigate = useNavigate();
 
   const [restuarant, setRestuarant] = useState({
     reviews: [],
   });
 
+  console.log(restuarant);
+
   useEffect(() => {
-    fetch(`http://localhost:9292/restuarants/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setRestuarant(data);
-      });
-  }, [id]);
+    let restuarant = restuarants.find((r) => r.id === parseInt(id));
+    setRestuarant(restuarant);
+  }, [id, restuarants]);
 
   const reviews = restuarant.reviews.map((review) => (
-    <RestuarantReview key={review.id} review={review} />
+    <RestuarantReview key={review.id} review={review} restuarant={restuarant} />
   ));
 
   return (
@@ -33,13 +31,13 @@ function Restuarant() {
         <h3>Reviews</h3>
         {reviews}
         <br></br>
-
-        <hr></hr>
       </div>
+
+      <hr></hr>
       <div className="xxx">
-        <button onClick={() => navigate("/reviews/new")}>
+        <NavLink to={`/restuarants/${restuarant.id}/reviews/new`}>
           Add review for {restuarant.name}
-        </button>
+        </NavLink>
       </div>
     </>
   );
