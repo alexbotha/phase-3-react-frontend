@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-function Review({ deleteReview }) {
+function Review({ deleteReview, reviews }) {
   const { id } = useParams();
   let navigate = useNavigate();
 
@@ -13,10 +13,9 @@ function Review({ deleteReview }) {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:9292/reviews/${id}`)
-      .then((response) => response.json())
-      .then((data) => setReview(data));
-  }, [id]);
+    let reviewId = reviews.find((r) => r.id === parseInt(id));
+    setReview(reviewId);
+  }, [id, reviews]);
 
   return (
     <>
