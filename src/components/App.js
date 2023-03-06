@@ -165,7 +165,7 @@ function App() {
             <Route
               path="/reviews/:id/edit"
               element={
-                reviews.length > 1 ? (
+                reviews.length > 0 ? (
                   <EditReview reviews={reviews} updateR={updateR} />
                 ) : null
               }
