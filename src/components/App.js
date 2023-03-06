@@ -24,9 +24,6 @@ function App() {
       .then((data) => {
         setRestuarants(data);
       });
-  }, []);
-
-  useEffect(() => {
     fetch("http://localhost:9292/reviews")
       .then((r) => r.json())
       .then((data) => {
@@ -34,11 +31,55 @@ function App() {
       });
   }, []);
 
+  function updateR(deets) {
+    const newReviews = reviews.map((r) => {
+      if (r.id === deets.id) {
+        return deets;
+      } else {
+        return r;
+      }
+    });
+
+    const newRestuarant = restuarants.map((rest) => {
+      if (rest.id === deets.restuarant_id) {
+        rest.reviews = rest.reviews.map((r) => {
+          if (r.id === deets.id) {
+            return deets;
+          } else {
+            return r;
+          }
+        });
+        return rest;
+      } else {
+        return rest;
+      }
+    });
+
+    setRestuarants(newRestuarant);
+    setReviews(newReviews);
+  }
+
   function updatingRestuarantList(newRestDetails) {
-    setRestuarants([...restuarants, newRestDetails]);
+    restuarants.filter((res) => {
+      if (res.name !== newRestDetails.name) {
+        setRestuarants([...restuarants, newRestDetails]);
+      } else {
+        alert("Restuarant already exists. Try another");
+      }
+    });
+    setRestuarants(restuarants);
   }
 
   function updatingReviewList(newReviewDetails) {
+    const newRestuarant = restuarants.map((rest) => {
+      if (rest.id === newReviewDetails.restuarant_id) {
+        rest.reviews = [...rest.reviews, newReviewDetails];
+        return rest;
+      } else {
+        return rest;
+      }
+    });
+    setRestuarants(newRestuarant);
     setReviews([...reviews, newReviewDetails]);
   }
 
@@ -46,7 +87,21 @@ function App() {
     const postDelete = reviews.filter((reviewObj) => {
       return reviewObj.id !== deletedReviewDetails.id;
     });
+
+    const newRestuarant = restuarants.map((rest) => {
+      if (rest.id === deletedReviewDetails.restuarant_id) {
+        rest.reviews = rest.reviews.filter(
+          (r) => r.id !== deletedReviewDetails.id
+        );
+        return rest;
+      } else {
+        return rest;
+      }
+    });
+
     setReviews(postDelete);
+    setRestuarants(newRestuarant);
+
     fetch(`http://localhost:9292/reviews/${deletedReviewDetails.id}`, {
       method: "DELETE",
     });
@@ -71,11 +126,21 @@ function App() {
                 <ReviewContainer reviews={reviews} restuarants={restuarants} />
               }
             />
-
-            <Route path="/restuarants/:id" element={<Restuarant />} />
+            <Route
+              path="/restuarants/:id"
+              element={
+                restuarants.length > 0 ? (
+                  <Restuarant restuarants={restuarants} />
+                ) : null
+              }
+            />
             <Route
               path="/reviews/:id"
-              element={<Review deleteReview={deleteReview} />}
+              element={
+                reviews.length > 0 ? (
+                  <Review deleteReview={deleteReview} reviews={reviews} />
+                ) : null
+              }
             />
             <Route
               exact
@@ -88,10 +153,23 @@ function App() {
               }
             />
             <Route
-              path="/reviews/new"
-              element={<AddReview updatingReviewList={updatingReviewList} />}
+              path="/restuarants/:restuarantId/reviews/new"
+              element={
+                <AddReview
+                  updatingReviewList={updatingReviewList}
+                  restuarants={restuarants}
+                />
+              }
             />
-            <Route path="/reviews/:id/edit" element={<EditReview />} />
+
+            <Route
+              path="/reviews/:id/edit"
+              element={
+                reviews.length > 1 ? (
+                  <EditReview reviews={reviews} updateR={updateR} />
+                ) : null
+              }
+            />
           </Routes>
         </div>
       )}
