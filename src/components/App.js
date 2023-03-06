@@ -63,14 +63,12 @@ function App() {
   }
 
   function updatingRestuarantList(newRestDetails) {
-    restuarants.filter((res) => {
-      if (res.name !== newRestDetails.name) {
-        return setRestuarants([...restuarants, newRestDetails]);
-      } else {
-        alert("Restuarant already exists. Try another");
-        return setRestuarants(restuarants);
-      }
-    });
+    debugger;
+    if (newRestDetails.id !== null) {
+      return setRestuarants([...restuarants, newRestDetails]);
+    } else {
+      return alert("Restuarant already exists. Try another");
+    }
   }
 
   function updatingReviewList(newReviewDetails) {
