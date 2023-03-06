@@ -31,6 +31,8 @@ function App() {
       });
   }, []);
 
+  console.log(restuarants);
+
   function updateR(deets) {
     const newReviews = reviews.map((r) => {
       if (r.id === deets.id) {
@@ -62,12 +64,12 @@ function App() {
   function updatingRestuarantList(newRestDetails) {
     restuarants.filter((res) => {
       if (res.name !== newRestDetails.name) {
-        setRestuarants([...restuarants, newRestDetails]);
+        return setRestuarants([...restuarants, newRestDetails]);
       } else {
         alert("Restuarant already exists. Try another");
+        return setRestuarants(restuarants);
       }
     });
-    setRestuarants(restuarants);
   }
 
   function updatingReviewList(newReviewDetails) {

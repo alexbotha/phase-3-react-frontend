@@ -9,8 +9,6 @@ function Restuarant({ restuarants }) {
     reviews: [],
   });
 
-  console.log(restuarant);
-
   useEffect(() => {
     let restuarant = restuarants.find((r) => r.id === parseInt(id));
     setRestuarant(restuarant);
