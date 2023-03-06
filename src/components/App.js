@@ -11,6 +11,7 @@ import ReviewContainer from "./ReviewContainer";
 import AddReview from "./AddReview";
 import WelcomePage from "./WelcomePage";
 import EditReview from "./EditReview";
+import NotFound from "./NotFound";
 
 function App() {
   const [restuarants, setRestuarants] = useState([]);
@@ -163,7 +164,6 @@ function App() {
                 />
               }
             />
-
             <Route
               path="/reviews/:id/edit"
               element={
@@ -172,6 +172,7 @@ function App() {
                 ) : null
               }
             />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       )}
