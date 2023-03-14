@@ -1,8 +1,8 @@
-# Welcome to Rate My Restuarant
+# Welcome to Rate My Restaurant
 
 ---
 
-A sleek restuarant rater
+A sleek restaurant rater
 
 ### Github Repositories
 
@@ -24,7 +24,7 @@ Being able to store information on local places and leave reviews and ratings is
 
 ---
 
-Restuarant Rater is made up of two corresponding repos in the frontend and backend
+restaurant Rater is made up of two corresponding repos in the frontend and backend
 
 1. To get started you will need to create a new project directory that contains two directories for our frontend and backend
 
