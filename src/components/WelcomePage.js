@@ -5,8 +5,8 @@ function WelcomePage() {
   let navigate = useNavigate();
   return (
     <>
-      <h1 className="welcome-page" onClick={() => navigate("/restuarants")}>
-        Welcome to Rate My Restuarant
+      <h1 className="welcome-page" onClick={() => navigate("/restaurants")}>
+        Welcome to Rate My Restaurant
         <br></br>
         Click anywhere to start
       </h1>

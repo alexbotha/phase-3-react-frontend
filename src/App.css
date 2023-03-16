@@ -103,7 +103,7 @@
   text-align: center;
 }
 
-.restuarant-heading {
+.restaurant-heading {
   display: grid;
   grid-template-columns: 562px 562px 562px;
   grid-template-rows: 10px 10px 10px;

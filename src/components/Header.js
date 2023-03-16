@@ -6,9 +6,9 @@ function Header() {
   return (
     <React.Fragment>
       <div className="header">
-        <h2 onClick={() => navigate("/")}>Review My Restuarant</h2>
+        <h2 onClick={() => navigate("/")}>Review My Restaurant</h2>
 
-        <p className="underHeader">The home of restuarant reviews</p>
+        <p className="underHeader">The home of restaurant reviews</p>
       </div>
     </React.Fragment>
   );

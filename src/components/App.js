@@ -4,9 +4,9 @@ import "../App.css";
 import Header from "./Header";
 import NavBar from "./NavBar";
 import Review from "./Review";
-import RestuarantContainer from "./RestuarantContainer";
-import Restuarant from "./Restuarant";
-import AddRestuarant from "./AddRestuarant";
+import RestaurantContainer from "./RestaurantContainer";
+import Restaurant from "./Restaurant";
+import AddRestaurant from "./AddRestaurant";
 import ReviewContainer from "./ReviewContainer";
 import AddReview from "./AddReview";
 import WelcomePage from "./WelcomePage";
@@ -14,16 +14,16 @@ import EditReview from "./EditReview";
 import NotFound from "./NotFound";
 
 function App() {
-  const [restuarants, setRestuarants] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
   const [reviews, setReviews] = useState([]);
 
   let location = useLocation();
 
   useEffect(() => {
-    fetch("http://localhost:9292/restuarants")
+    fetch("http://localhost:9292/restaurants")
       .then((r) => r.json())
       .then((data) => {
-        setRestuarants(data);
+        setRestaurants(data);
       });
     fetch("http://localhost:9292/reviews")
       .then((r) => r.json())
@@ -32,7 +32,7 @@ function App() {
       });
   }, []);
 
-  console.log(restuarants);
+  console.log(restaurants);
 
   function updateR(deets) {
     const newReviews = reviews.map((r) => {
@@ -43,8 +43,8 @@ function App() {
       }
     });
 
-    const newRestuarant = restuarants.map((rest) => {
-      if (rest.id === deets.restuarant_id) {
+    const newRestaurant = restaurants.map((rest) => {
+      if (rest.id === deets.restaurant_id) {
         rest.reviews = rest.reviews.map((r) => {
           if (r.id === deets.id) {
             return deets;
@@ -58,29 +58,28 @@ function App() {
       }
     });
 
-    setRestuarants(newRestuarant);
+    setRestaurants(newRestaurant);
     setReviews(newReviews);
   }
 
-  function updatingRestuarantList(newRestDetails) {
-    debugger;
+  function updatingRestaurantList(newRestDetails) {
     if (newRestDetails.id !== null) {
-      return setRestuarants([...restuarants, newRestDetails]);
+      return setRestaurants([...restaurants, newRestDetails]);
     } else {
-      return alert("Restuarant already exists. Try another");
+      return alert(`${newRestDetails.name} already exists. Try another`);
     }
   }
 
   function updatingReviewList(newReviewDetails) {
-    const newRestuarant = restuarants.map((rest) => {
-      if (rest.id === newReviewDetails.restuarant_id) {
+    const newRestaurant = restaurants.map((rest) => {
+      if (rest.id === newReviewDetails.restaurant_id) {
         rest.reviews = [...rest.reviews, newReviewDetails];
         return rest;
       } else {
         return rest;
       }
     });
-    setRestuarants(newRestuarant);
+    setRestaurants(newRestaurant);
     setReviews([...reviews, newReviewDetails]);
   }
 
@@ -89,7 +88,7 @@ function App() {
       return reviewObj.id !== deletedReviewDetails.id;
     });
 
-    const newRestuarant = restuarants.map((rest) => {
+    const newRestaurant = restaurants.map((rest) => {
       if (rest.id === deletedReviewDetails.restuarant_id) {
         rest.reviews = rest.reviews.filter(
           (r) => r.id !== deletedReviewDetails.id
@@ -101,7 +100,7 @@ function App() {
     });
 
     setReviews(postDelete);
-    setRestuarants(newRestuarant);
+    setRestaurants(newRestaurant);
 
     fetch(`http://localhost:9292/reviews/${deletedReviewDetails.id}`, {
       method: "DELETE",
@@ -115,23 +114,23 @@ function App() {
       ) : (
         <div className="app">
           <Header />
-          <NavBar restuarants={restuarants} />
+          <NavBar restaurants={restaurants} />
           <Routes>
             <Route
-              path="/restuarants"
-              element={<RestuarantContainer restuarants={restuarants} />}
+              path="/restaurants"
+              element={<RestaurantContainer restaurants={restaurants} />}
             />
             <Route
               path="/reviews"
               element={
-                <ReviewContainer reviews={reviews} restuarants={restuarants} />
+                <ReviewContainer reviews={reviews} restaurants={restaurants} />
               }
             />
             <Route
-              path="/restuarants/:id"
+              path="/restaurants/:id"
               element={
-                restuarants.length > 0 ? (
-                  <Restuarant restuarants={restuarants} />
+                restaurants.length > 0 ? (
+                  <Restaurant restaurants={restaurants} />
                 ) : null
               }
             />
@@ -145,20 +144,20 @@ function App() {
             />
             <Route
               exact
-              path="/restuarants/new"
+              path="/restaurants/new"
               element={
-                <AddRestuarant
-                  updatingRestuarantList={updatingRestuarantList}
-                  restuarants={restuarants}
+                <AddRestaurant
+                  updatingRestaurantList={updatingRestaurantList}
+                  restaurants={restaurants}
                 />
               }
             />
             <Route
-              path="/restuarants/:restuarantId/reviews/new"
+              path="/restaurants/:restaurantId/reviews/new"
               element={
                 <AddReview
                   updatingReviewList={updatingReviewList}
-                  restuarants={restuarants}
+                  restaurants={restaurants}
                 />
               }
             />

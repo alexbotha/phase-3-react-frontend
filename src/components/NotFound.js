@@ -6,7 +6,7 @@ function NotFound() {
   return (
     <>
       <h1>Page not found</h1>
-      <button onClick={() => navigate("/restuarants")}>
+      <button onClick={() => navigate("/restaurants")}>
         Click to return to the home page
       </button>
     </>

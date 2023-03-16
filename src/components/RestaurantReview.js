@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function RestuarantReview({ review }) {
+function RestaurantReview({ review }) {
   return (
     <div>
       <NavLink className="underline" to={`/reviews/${review.id}`}>
@@ -11,4 +11,4 @@ function RestuarantReview({ review }) {
   );
 }
 
-export default RestuarantReview;
+export default RestaurantReview;

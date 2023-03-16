@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function AddRestuarant({ updatingRestuarantList }) {
+function AddRestaurant({ updatingRestaurantList }) {
   let navigate = useNavigate();
 
-  const [newRestuarant, setNewRestuarant] = useState({
+  const [newRestaurant, setNewRestaurant] = useState({
     name: "",
     cuisine: "",
     overall_rating: "",
@@ -12,36 +12,36 @@ function AddRestuarant({ updatingRestuarantList }) {
   });
 
   function handleChange(e) {
-    setNewRestuarant({
-      ...newRestuarant,
+    setNewRestaurant({
+      ...newRestaurant,
       [e.target.name]: e.target.value,
     });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`http://localhost:9292/restuarants`, {
+    fetch(`http://localhost:9292/restaurants`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newRestuarant),
+      body: JSON.stringify(newRestaurant),
     })
       .then((response) => response.json())
-      .then((newRestDetails) => updatingRestuarantList(newRestDetails));
-    navigate("/restuarants");
+      .then((newRestDetails) => updatingRestaurantList(newRestDetails));
+    navigate("/restaurant");
   }
 
   return (
     <div>
-      <h3 className="rest-details">Create a new restuarant</h3>
+      <h3 className="rest-details">Create a new restaurant</h3>
       <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
           onChange={handleChange}
           placeholder="Name"
-          value={newRestuarant.name}
+          value={newRestaurant.name}
           autoFocus={true}
         />
         <input
@@ -49,28 +49,28 @@ function AddRestuarant({ updatingRestuarantList }) {
           name="cuisine"
           onChange={handleChange}
           placeholder="Cuisine"
-          value={newRestuarant.imageUrl}
+          value={newRestaurant.imageUrl}
         />
         <input
           type="text"
           name="overall_rating"
           onChange={handleChange}
           placeholder="Rating"
-          value={newRestuarant.position}
+          value={newRestaurant.position}
         />
         <input
           type="text"
           name="website"
           onChange={handleChange}
           placeholder="Website..."
-          value={newRestuarant.age}
+          value={newRestaurant.age}
         />
 
         <br />
         <br />
 
-        <button className="addRestuarantButton" type="submit">
-          Add Restuarant
+        <button className="addRestaurantButton" type="submit">
+          Add Restaurant
         </button>
       </form>
       <br></br>
@@ -79,4 +79,4 @@ function AddRestuarant({ updatingRestuarantList }) {
   );
 }
 
-export default AddRestuarant;
+export default AddRestaurant;

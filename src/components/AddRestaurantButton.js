@@ -1,16 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function AddRestuarantButton() {
+function AddRestaurantButton() {
   let navigate = useNavigate();
   return (
     <button
       className="add-res-btn"
-      onClick={() => navigate("/restuarants/new")}
+      onClick={() => navigate("/restaurants/new")}
     >
-      Add new restuarant
+      Add new restaurant
     </button>
   );
 }
 
-export default AddRestuarantButton;
+export default AddRestaurantButton;

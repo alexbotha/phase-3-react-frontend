@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function AddReview({ updatingReviewList, restuarants }) {
+function AddReview({ updatingReviewList, restaurants }) {
   let navigate = useNavigate();
-  const { restuarantId } = useParams();
+  const { restaurantId } = useParams();
 
-  const [restuarant, setR] = useState("");
+  const [restaurant, setR] = useState("");
   const [newReview, setNewReview] = useState({
     review: "",
     rating: "",
   });
 
   useEffect(() => {
-    let restuarant = restuarants.find((r) => r.id === parseInt(restuarantId));
-    setR(restuarant);
-  }, [restuarantId, restuarants]);
+    let restaurant = restaurants.find((r) => r.id === parseInt(restaurantId));
+    setR(restaurant);
+  }, [restaurantId, restaurants]);
 
   function handleChange(e) {
     setNewReview({
@@ -25,7 +25,7 @@ function AddReview({ updatingReviewList, restuarants }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`http://localhost:9292/restuarants/${restuarantId}/reviews`, {
+    fetch(`http://localhost:9292/restaurants/${restaurantId}/reviews`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,13 +34,13 @@ function AddReview({ updatingReviewList, restuarants }) {
     })
       .then((response) => response.json())
       .then((newReviewDetails) => updatingReviewList(newReviewDetails));
-    navigate(`/restuarants/${restuarantId}`);
+    navigate(`/restaurants/${restaurantId}`);
   }
 
   return (
     <div>
       <h3 className="rest-details">{`Create a review for ${
-        restuarant ? restuarant.name : ""
+        restaurant ? restaurant.name : ""
       }`}</h3>
       <form className="form" onSubmit={handleSubmit}>
         <input

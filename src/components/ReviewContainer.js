@@ -1,6 +1,5 @@
 import React from "react";
 import ReviewItem from "./ReviewItem";
-import AddReviewButton from "./AddReviewButton";
 
 function ReviewContainer({ reviews }) {
   const review = reviews.map((review) => (
@@ -16,9 +15,6 @@ function ReviewContainer({ reviews }) {
       {review}
       <br></br>
       <hr></hr>
-      <div className="xxx">
-        <AddReviewButton />
-      </div>
     </>
   );
 }
